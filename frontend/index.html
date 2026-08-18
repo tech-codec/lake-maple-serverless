@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lake Maple Fishing Competition</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Lake Maple Fishing Competition</h1>
+      <p>Serverless Competition Management System</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Register Contestant</h2>
+
+        <form id="registrationForm">
+          <label>First Name</label>
+          <input id="firstName" required />
+
+          <label>Last Name</label>
+          <input id="lastName" required />
+
+          <label>Email</label>
+          <input id="email" type="email" required />
+
+          <button type="submit">Register</button>
+        </form>
+
+        <p id="registrationResult"></p>
+      </section>
+
+      <section class="card">
+        <h2>Submit Fish Catch</h2>
+
+        <form id="fishForm">
+          <label>Contestant ID</label>
+          <input id="contestantId" required />
+
+          <label>Fish Type</label>
+          <select id="fishType">
+            <option>Pike</option>
+            <option>Bass</option>
+            <option>Trout</option>
+            <option>Walleye</option>
+          </select>
+
+          <label>Weight (kg)</label>
+          <input id="weight" type="number" step="0.01" min="0.01" required />
+
+          <label>Fish Photo</label>
+          <input id="photo" type="file" accept="image/*" required />
+
+          <button type="submit">Submit Catch</button>
+        </form>
+
+        <p id="fishResult"></p>
+      </section>
+
+      <section class="card">
+        <h2>Current Leaderboard</h2>
+
+        <button id="loadLeaderboard">Refresh Leaderboard</button>
+
+        <div id="leaderboard"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

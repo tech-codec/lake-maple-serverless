@@ -378,3 +378,23 @@ resource "azurerm_communication_service_email_domain_association" "lake_maple" {
   communication_service_id = azurerm_communication_service.lake_maple.id
   email_service_domain_id  = azurerm_email_communication_service_domain.lake_maple.id
 }
+
+# ---------------------------------------------------------
+# Azure Static Web App
+# Hosts the Lake Maple frontend
+# ---------------------------------------------------------
+
+resource "azurerm_static_web_app" "lake_maple" {
+  name                = "${var.project_name}-${var.environment}-frontend"
+  resource_group_name = azurerm_resource_group.lake_maple.name
+  location            = "East US 2"
+
+  sku_tier = "Free"
+  sku_size = "Free"
+
+  tags = {
+    project     = "lake-maple"
+    environment = var.environment
+    managed_by  = "terraform"
+  }
+}

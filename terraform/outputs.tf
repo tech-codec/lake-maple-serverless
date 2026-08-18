@@ -47,3 +47,13 @@ output "email_sender_domain" {
   description = "Azure managed email sender domain"
   value       = azurerm_email_communication_service_domain.lake_maple.mail_from_sender_domain
 }
+
+output "static_web_app_name" {
+  description = "Azure Static Web App name"
+  value       = azurerm_static_web_app.lake_maple.name
+}
+
+output "static_web_app_url" {
+  description = "Azure Static Web App production URL"
+  value       = "https://${azurerm_static_web_app.lake_maple.default_host_name}"
+}
