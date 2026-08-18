@@ -1,59 +1,26 @@
-.terraform/
+# Azure Functions local settings
+functions/local.settings.json
+
+# Azurite local storage data
+functions/__blobstorage__/
+functions/__queuestorage__/
+functions/__azurite_db_blob__.json
+functions/__azurite_db_blob_extent__.json
+functions/__azurite_db_queue__.json
+functions/__azurite_db_queue_extent__.json
+functions/__azurite_db_table__.json
+functions/__azurite_db_table_extent__.json
+
+# Node
+functions/node_modules/
+frontend/node_modules/
+
+# Terraform
+**/.terraform/
 *.tfstate
 *.tfstate.*
-crash.log
-crash.*.log
-terraform.tfvars
 *.tfplan
+terraform.tfvars
 
-
-bin/
-**/bin/
-!Modules/**
-obj
-csx
-.vs
-edge
-Publish
-
-*.user
-*.suo
-*.cscfg
-*.Cache
-project.lock.json
-
-/packages
-/TestResults
-
-/tools/NuGet.exe
-/App_Data
-/secrets
-/data
-.secrets
-appsettings.json
-local.settings.json
-
-node_modules
-dist
-
-# Local python packages
-.python_packages/
-
-# Python Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Azurite artifacts
-__blobstorage__
-__queuestorage__
-__azurite_db*__.json
+# Frontend deployment output
+frontend/deploy/
