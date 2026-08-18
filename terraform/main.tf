@@ -182,6 +182,15 @@ resource "azurerm_cosmosdb_sql_container" "leaderboards" {
   partition_key_paths = ["/fishType"]
 }
 
+resource "azurerm_cosmosdb_sql_container" "leases" {
+  name                = "leases"
+  resource_group_name = azurerm_resource_group.lake_maple.name
+  account_name        = azurerm_cosmosdb_account.lake_maple.name
+  database_name       = azurerm_cosmosdb_sql_database.lake_maple.name
+
+  partition_key_paths = ["/id"]
+}
+
 # ---------------------------------------------------------
 # Azure Service Bus
 # ---------------------------------------------------------
@@ -258,7 +267,7 @@ resource "azurerm_linux_function_app" "lake_maple" {
 
     WEBSITE_NODE_DEFAULT_VERSION = "~22"
 
-    WEBSITE_RUN_FROM_PACKAGE = "1"
+    # WEBSITE_RUN_FROM_PACKAGE = "1"
 
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.lake_maple.instrumentation_key
 
@@ -286,9 +295,15 @@ resource "azurerm_linux_function_app" "lake_maple" {
 
     COMMUNICATION_CONNECTION_STRING = azurerm_communication_service.lake_maple.primary_connection_string
 
-    EMAIL_SENDER_DOMAIN = azurerm_email_communication_service_domain.lake_maple.mail_from_sender_domain
+    EMAIL_SENDER_DOMAIN = "DoNotReply@${azurerm_email_communication_service_domain.lake_maple.mail_from_sender_domain}"
 
     ORGANIZER_EMAIL = var.organizer_email
+
+    COSMOS_CONNECTION = azurerm_cosmosdb_account.lake_maple.primary_sql_connection_string
+
+    REPORTS_CONTAINER = azurerm_storage_container.reports.name
+
+    LEADERBOARD_REPORT_SCHEDULE = "0 0 1 * * *"
   }
 
   identity {

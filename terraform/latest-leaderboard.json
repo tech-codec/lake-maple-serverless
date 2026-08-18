@@ -1,0 +1,19 @@
+{
+  "competition": "Lake Maple Fishing Competition",
+  "reportType": "Daily Leaderboard",
+  "generatedAt": "2026-08-18T17:08:00.166Z",
+  "totalCategories": 1,
+  "leaderboard": [
+    {
+      "position": 1,
+      "fishType": "Pike",
+      "contestantId": "4312f4f9-25d6-476f-a834-a440e042e156",
+      "contestantName": "John Smith",
+      "weight": 7.5,
+      "fishCatchId": "7710b60e-496e-432b-81f7-36568055bf3a",
+      "updatedAt": "2026-08-18T16:27:12.470Z"
+    }
+  ],
+  "publishedAt": "2026-08-18T17:08:02.183Z",
+  "status": "published"
+}
